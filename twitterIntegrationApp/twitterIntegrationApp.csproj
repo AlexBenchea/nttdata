@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>5193c93c-8d0d-46a6-8d00-a068cf1c3cea</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\main.js" />
+    <Content Remove="wwwroot\js\main.js.map" />
+    <Content Remove="wwwroot\js\polyfills.js" />
+    <Content Remove="wwwroot\js\polyfills.js.map" />
+    <Content Remove="wwwroot\js\runtime.js" />
+    <Content Remove="wwwroot\js\runtime.js.map" />
+    <Content Remove="wwwroot\js\styles.js" />
+    <Content Remove="wwwroot\js\styles.js.map" />
+    <Content Remove="wwwroot\js\vendor.js" />
+    <Content Remove="wwwroot\js\vendor.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\main.js.map" />
+    <None Include="wwwroot\js\polyfills.js" />
+    <None Include="wwwroot\js\polyfills.js.map" />
+    <None Include="wwwroot\js\runtime.js" />
+    <None Include="wwwroot\js\runtime.js.map" />
+    <None Include="wwwroot\js\styles.js" />
+    <None Include="wwwroot\js\styles.js.map" />
+    <None Include="wwwroot\js\vendor.js" />
+    <None Include="wwwroot\js\vendor.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
