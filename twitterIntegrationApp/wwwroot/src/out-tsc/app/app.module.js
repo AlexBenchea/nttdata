@@ -1,7 +1,7 @@
 import { __decorate, __metadata } from "tslib";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createCustomElement } from '@angular/elements';
 import { AppComponent } from 'src/app/app.component';
 import { MyTodoComponent } from './my-todo/my-todo.component';
@@ -26,6 +26,7 @@ AppModule = __decorate([
         imports: [
             BrowserModule,
             FormsModule,
+            ReactiveFormsModule,
             HttpClientModule
         ],
         entryComponents: [MyTodoComponent]

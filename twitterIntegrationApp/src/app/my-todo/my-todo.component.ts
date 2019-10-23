@@ -1,5 +1,4 @@
-import { Component, OnInit,ViewEncapsulation } from "@angular/core";
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation, ElementRef } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 @Component({
     selector: "app-my-todo",
@@ -9,14 +8,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyTodoComponent implements OnInit {
     myTodos: string[] = [];
-    newTodo: string;
-    private REST_API_SERVER = "https://localhost:44314/api/values";
+    name: string = "";
+    private REST_API_SERVER = "https://localhost/api/twitter/";
     constructor(private httpClient: HttpClient) {
-         this.httpClient.get(this.REST_API_SERVER).subscribe((data: string[]) => {
-            this.myTodos = data;
-        })  ;
+        this.getPosts();
+    }
+    
+    ngOnInit() {
     }
 
-    ngOnInit() {
+    getPosts(name: string = '') {
+        this.httpClient.get(this.REST_API_SERVER + name).subscribe((data: string[]) => {
+            this.myTodos = data;
+        });
     }
 }

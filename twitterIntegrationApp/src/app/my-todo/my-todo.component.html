@@ -1,3 +1,10 @@
-<li *ngFor="let value of myTodos ">
-    {{value}}
-</li>
+    <input placeholder="Enter name" [(ngModel)]="name" name="nume-field" />
+    <button type="button" (click)="getPosts(name)">Get posts</button>
+    <br />
+    <div>These are your tweets:</div>
+
+    <ul>
+        <li *ngFor="let value of myTodos ">
+            <p class="blog-post" innerHtml="{{value}}"></p>
+        </li>
+    </ul>

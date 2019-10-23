@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<li *ngFor=\"let value of myTodos \">\r\n    {{value}}\r\n</li>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("    <input placeholder=\"Enter name\" [(ngModel)]=\"name\" name=\"nume-field\" />\r\n    <button type=\"button\" (click)=\"getPosts(name)\">Get posts</button>\r\n    <br />\r\n    <div>These are your tweets:</div>\r\n\r\n    <ul>\r\n        <li *ngFor=\"let value of myTodos \">\r\n            <p class=\"blog-post\" innerHtml=\"{{value}}\"></p>\r\n        </li>\r\n    </ul>\r\n");
 
 /***/ }),
 
@@ -371,6 +371,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"]
         ],
         entryComponents: [_my_todo_my_todo_component__WEBPACK_IMPORTED_MODULE_6__["MyTodoComponent"]]
@@ -391,7 +392,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL215LXRvZG8vbXktdG9kby5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  overflow: hidden;\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  /* Limit to 3 lines */\n  -webkit-box-orient: vertical;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXktdG9kby9DOlxcVXNlcnNcXGFsZXhhbmRydS5iZW5jaGVhXFxiZW5jaFR3aXR0ZXJBcHBcXHR3aXR0ZXJJbnRlZ3JhdGlvbkFwcFxcdHdpdHRlckludGVncmF0aW9uQXBwL3NyY1xcYXBwXFxteS10b2RvXFxteS10b2RvLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9teS10b2RvL215LXRvZG8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7RUFBdUIscUJBQUE7RUFDdkIsNEJBQUE7QUNFSiIsImZpbGUiOiJzcmMvYXBwL215LXRvZG8vbXktdG9kby5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIGRpc3BsYXk6IC13ZWJraXQtYm94O1xyXG4gICAgLXdlYmtpdC1saW5lLWNsYW1wOiAzOyAvKiBMaW1pdCB0byAzIGxpbmVzICovXHJcbiAgICAtd2Via2l0LWJveC1vcmllbnQ6IHZlcnRpY2FsO1xyXG59XHJcbiIsInAge1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiAtd2Via2l0LWJveDtcbiAgLXdlYmtpdC1saW5lLWNsYW1wOiAzO1xuICAvKiBMaW1pdCB0byAzIGxpbmVzICovXG4gIC13ZWJraXQtYm94LW9yaWVudDogdmVydGljYWw7XG59Il19 */");
 
 /***/ }),
 
@@ -415,12 +416,16 @@ let MyTodoComponent = class MyTodoComponent {
     constructor(httpClient) {
         this.httpClient = httpClient;
         this.myTodos = [];
-        this.REST_API_SERVER = "https://localhost:44314/api/values";
-        this.httpClient.get(this.REST_API_SERVER).subscribe((data) => {
-            this.myTodos = data;
-        });
+        this.name = "";
+        this.REST_API_SERVER = "https://localhost/api/twitter/";
+        this.getPosts();
     }
     ngOnInit() {
+    }
+    getPosts(name = '') {
+        this.httpClient.get(this.REST_API_SERVER + name).subscribe((data) => {
+            this.myTodos = data;
+        });
     }
 };
 MyTodoComponent.ctorParameters = () => [

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,Injector } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, Injector } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createCustomElement } from '@angular/elements';
 import { AppComponent } from 'src/app/app.component';
 import { MyTodoComponent } from './my-todo/my-todo.component';
@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule
     ],
     entryComponents: [MyTodoComponent]

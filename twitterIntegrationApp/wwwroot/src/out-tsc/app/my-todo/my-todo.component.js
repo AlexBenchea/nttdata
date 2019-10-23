@@ -5,12 +5,17 @@ let MyTodoComponent = class MyTodoComponent {
     constructor(httpClient) {
         this.httpClient = httpClient;
         this.myTodos = [];
-        this.REST_API_SERVER = "https://localhost:44314/api/values";
-        this.httpClient.get(this.REST_API_SERVER).subscribe((data) => {
-            this.myTodos = data;
-        });
+        this.userName = "";
+        this.name = "";
+        this.REST_API_SERVER = "https://localhost/api/twitter/";
+        this.getPosts();
     }
     ngOnInit() {
+    }
+    getPosts(name = '') {
+        this.httpClient.get(this.REST_API_SERVER + name).subscribe((data) => {
+            this.myTodos = data;
+        });
     }
 };
 MyTodoComponent = __decorate([
